@@ -149,10 +149,11 @@ def main():
     # Load the datasets
     if ('others' in args.dataset):
         train, test = initialize_other_dataset(dataset_name, datasets)
-        train.to_eval, test.to_eval = torch.tensor(train.to_eval, dtype=torch.uint8),  torch.tensor(test.to_eval, dtype=torch.uint8)
+        train.to_eval, test.to_eval = torch.tensor(train.to_eval, dtype=torch.bool), torch.tensor(test.to_eval, dtype=torch.bool)
     else:
         train, val, test = initialize_dataset(dataset_name, datasets)
-        train.to_eval, val.to_eval, test.to_eval = torch.tensor(train.to_eval, dtype=torch.uint8), torch.tensor(val.to_eval, dtype=torch.uint8), torch.tensor(test.to_eval, dtype=torch.uint8)
+        train.to_eval, val.to_eval, test.to_eval = torch.tensor(train.to_eval, dtype=torch.bool), torch.tensor(val.to_eval, dtype=torch.bool), torch.tensor(test.to_eval, dtype=torch.bool)
+
     
     different_from_0 = torch.tensor(np.array((test.Y.sum(0)!=0), dtype = np.uint8), dtype=torch.uint8)
 
