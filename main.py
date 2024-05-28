@@ -228,7 +228,7 @@ def main():
             train_output = get_constr_out(train_output, R)
             train_output = (1-labels)*constr_output.double() + labels*train_output
 
-            loss = criterion(train_output[:,train.to_eval], labels[:,train.to_eval]) 
+            loss = criterion(train_output[:,train.to_eval.bool()], labels[:,train.to_eval.bool()]) 
 
             predicted = constr_output.data > 0.5
 
@@ -269,7 +269,7 @@ def main():
             y_test = torch.cat((y_test, y), dim =0)
 
 
-    score = average_precision_score(y_test[:,test.to_eval], constr_test.data[:,test.to_eval], average='micro')
+    score = average_precision_score(y_test[:,test.to_eval.bool()], constr_test.data[:,test.to_eval.bool()], average='micro')
 
     f = open('results/'+dataset_name+'.csv', 'a')
     f.write(str(seed)+ ',' +str(epoch) + ',' + str(score) + '\n')
