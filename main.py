@@ -275,7 +275,7 @@ def main():
     #f = open('results/'+dataset_name+'.csv', 'a')
     #f.write(str(seed)+ ',' +str(epoch) + ',' + str(score) + '\n')
     #f.close()
-    print('dataset: ' + dataset_name + ', ' + 'seed: ' + str(seed) + ', ' + 'epoch: ' + str(epoch) + ', ' + 'score: ' + str(score))
+    print('\n dataset: ' + dataset_name + ', ' + 'seed: ' + str(seed) + ', ' + 'epoch: ' + str(epoch) + ', ' + 'score: ' + str(score))
 
 if __name__ == "__main__":
     main()
